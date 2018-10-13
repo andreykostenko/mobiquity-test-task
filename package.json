@@ -1,0 +1,14 @@
+{
+  "name": "mobiquity-test-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "protractor.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreykostenko/mobiquity-test-task.git"
+  },
+  "dependencies": {
+    "protractor": "^5.4.1",
+    "protractor-jasmine2-html-reporter": "0.0.7"
+  }
+}
