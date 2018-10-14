@@ -33,8 +33,8 @@ describe('Login/logout spec', () => {
     it('After logging out no user data should be present on login page', async () => {
         await loginPage.signInAsLuke();
         await loginPage.logoutButton.click();
-        await expect(loginPage.userName.getValue()).toBe('','Username shoudnt be present on login page after loging out');
-        await expect(loginPage.password.getValue()).toBe('','Password shoudnt be present on login page after loging out');
+        await expect(loginPage.userName.getValue()).toBe('','Username shoudnt be present on login page after logging out');
+        await expect(loginPage.password.getValue()).toBe('','Password shoudnt be present on login page after logging out');
 
 
     });

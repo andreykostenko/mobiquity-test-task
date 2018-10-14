@@ -3,7 +3,7 @@ const loginPage = require('../Utils/login-utils.js');
 const userListPage = require('../Utils/user-list-utils.js');
 
 
-describe('Users CRUD spec', () => {
+describe('Employees CRUD spec', () => {
 
     beforeAll(async () => {
         await browser.driver.manage().window().maximize();
@@ -20,7 +20,8 @@ describe('Users CRUD spec', () => {
     const uniqueEditKey = mask + 'U`';
     const uniqueDeleteKey = mask + 'D`';
 
-    it('Create new user  ', async () => {
+    it('Create new employee  ', async () => {
+        //create
         await userListPage.createUserBtn.click();
         await userListPage.firstName.setValue(uniqueCreateKey + 'FirstName');
         await userListPage.lastName.setValue(uniqueCreateKey + 'LastName');
@@ -39,10 +40,10 @@ describe('Users CRUD spec', () => {
 
 
     });
-    /*  Ideally, Create, Update and Delete operations should be done with separate objects, that way tests will be independent of each other. In our case we will use one user for create/update operations,
+    /*  Ideally, Create, Update and Delete operations should be done with separate objects, that way tests will be independent of each other. In our case we will use same employee for create/update operations,
     which is obviously not the best practice, but still legit for test task :) */
 
-    it('Update user(+via doubleclick) ', async () => {
+    it('Update employee(+via doubleclick) ', async () => {
 
 
         await userListPage.findUser(uniqueCreateKey);
@@ -63,7 +64,7 @@ describe('Users CRUD spec', () => {
 
     });
 
-    it('Delete user ', async () => {
+    it('Delete employee ', async () => {
         //Create user for deletion
         await userListPage.createUserBtn.click();
         await userListPage.firstName.setValue(uniqueDeleteKey + 'FirstName');
