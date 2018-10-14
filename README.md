@@ -4,7 +4,7 @@
 Prerequisites:
 - NodeJS
 - NPM
-- Java(for selenium)
+- Java(required for selenium)
 
 To run tests:
 1. Pull project
