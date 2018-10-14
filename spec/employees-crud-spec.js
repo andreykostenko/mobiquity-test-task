@@ -65,7 +65,7 @@ describe('Employees CRUD spec', () => {
         await employeeListPage.employeeInList.click();
         await employeeListPage.deleteemployeeBtn.click();
         await alertHelper.acceptAlert();
-        await employeeListPage.findEmployee(uniqueDeleteKey);
+        await employeeListPage.findEmployee(uniqueEditKey);
         await expect(employeeListPage.employeeInList.isPresent()).toBeFalsy('employee is still present in list after deletion');
         await loginPage.signInAsLuke();
         await expect(employeeListPage.employeeInList.isPresent()).toBeFalsy('employee is still present in list after deletion and relogin');
