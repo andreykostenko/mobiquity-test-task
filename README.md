@@ -4,7 +4,7 @@
 Prerequisites:
 - NodeJS
 - NPM
-- Java(required for selenium)
+- Java
 
 To run tests:
 1. Clone project
@@ -14,5 +14,5 @@ To run tests:
 5. Execute "node node_modules/protractor/bin/webdriver-manager update"
 6. Execute "node node_modules/protractor/bin/protractor protractor.conf.js"
 
-After test run you can check results in HTML report (ProjectRoot/Report/htmlReport.html)
+After test run you can check results in HTML report (ProjectRoot/report/htmlReport.html)
 
