@@ -1,6 +1,6 @@
 'use strict'
 const loginPage = require('../Utils/login-utils.js');
-const userListPage = require('../Utils/user-list-utils.js');
+const employeeListPage = require('../Utils/employee-list-utils.js');
 
 
 describe('Employees CRUD spec', () => {
@@ -22,21 +22,21 @@ describe('Employees CRUD spec', () => {
 
     it('Create new employee  ', async () => {
         //create
-        await userListPage.createUserBtn.click();
-        await userListPage.firstName.setValue(uniqueCreateKey + 'FirstName');
-        await userListPage.lastName.setValue(uniqueCreateKey + 'LastName');
-        await userListPage.startDate.setValue(startDate);
-        await userListPage.email.setValue(uniqueCreateKey + '@test.com');
-        await userListPage.addUserbtn.click();
+        await employeeListPage.createemployeeBtn.click();
+        await employeeListPage.firstName.setValue(uniqueCreateKey + 'FirstName');
+        await employeeListPage.lastName.setValue(uniqueCreateKey + 'LastName');
+        await employeeListPage.startDate.setValue(startDate);
+        await employeeListPage.email.setValue(uniqueCreateKey + '@test.com');
+        await employeeListPage.addemployeebtn.click();
 
         //validate
-        await userListPage.findUser(uniqueCreateKey);
-        await userListPage.userInList.click();
-        await userListPage.editUserBtn.click();
-        await expect(userListPage.firstName.getValue()).toEqual(uniqueCreateKey + 'FirstName');
-        await expect(userListPage.lastName.getValue()).toEqual(uniqueCreateKey + 'LastName');
-        await expect(userListPage.email.getValue()).toEqual(uniqueCreateKey + '@test.com');
-        await expect(userListPage.startDate.getValue()).toEqual(startDate);
+        await employeeListPage.findemployee(uniqueCreateKey);
+        await employeeListPage.employeeInList.click();
+        await employeeListPage.editemployeeBtn.click();
+        await expect(employeeListPage.firstName.getValue()).toEqual(uniqueCreateKey + 'FirstName');
+        await expect(employeeListPage.lastName.getValue()).toEqual(uniqueCreateKey + 'LastName');
+        await expect(employeeListPage.email.getValue()).toEqual(uniqueCreateKey + '@test.com');
+        await expect(employeeListPage.startDate.getValue()).toEqual(startDate);
 
 
     });
@@ -46,47 +46,47 @@ describe('Employees CRUD spec', () => {
     it('Update employee(+via doubleclick) ', async () => {
 
 
-        await userListPage.findUser(uniqueCreateKey);
-        await browser.actions().doubleClick(userListPage.userInList).perform(); //doubleclick
-        await userListPage.firstName.setValue(uniqueEditKey + 'FirstName');
-        await userListPage.lastName.setValue(uniqueEditKey + 'LastName');
-        await userListPage.email.setValue(uniqueEditKey + '@test.com');
-        await userListPage.startDate.setValue(startDateU);
-        await userListPage.UpdateUserbtn.click();
+        await employeeListPage.findemployee(uniqueCreateKey);
+        await browser.actions().doubleClick(employeeListPage.employeeInList).perform(); //doubleclick
+        await employeeListPage.firstName.setValue(uniqueEditKey + 'FirstName');
+        await employeeListPage.lastName.setValue(uniqueEditKey + 'LastName');
+        await employeeListPage.email.setValue(uniqueEditKey + '@test.com');
+        await employeeListPage.startDate.setValue(startDateU);
+        await employeeListPage.Updateemployeebtn.click();
 
         //Validate
-        await userListPage.findUser(uniqueEditKey);
-        await browser.actions().doubleClick(userListPage.userInList).perform();
-        await expect(userListPage.firstName.getValue()).toEqual(uniqueEditKey + 'FirstName');
-        await expect(userListPage.lastName.getValue()).toEqual(uniqueEditKey + 'LastName');
-        await expect(userListPage.email.getValue()).toEqual(uniqueEditKey + '@test.com');
-        await expect(userListPage.startDate.getValue()).toEqual(startDateU);
+        await employeeListPage.findemployee(uniqueEditKey);
+        await browser.actions().doubleClick(employeeListPage.employeeInList).perform();
+        await expect(employeeListPage.firstName.getValue()).toEqual(uniqueEditKey + 'FirstName');
+        await expect(employeeListPage.lastName.getValue()).toEqual(uniqueEditKey + 'LastName');
+        await expect(employeeListPage.email.getValue()).toEqual(uniqueEditKey + '@test.com');
+        await expect(employeeListPage.startDate.getValue()).toEqual(startDateU);
 
     });
 
     it('Delete employee ', async () => {
-        //Create user for deletion
-        await userListPage.createUserBtn.click();
-        await userListPage.firstName.setValue(uniqueDeleteKey + 'FirstName');
-        await userListPage.lastName.setValue(uniqueDeleteKey + 'LastName');
-        await userListPage.startDate.setValue(startDate);
-        await userListPage.email.setValue(uniqueDeleteKey + '@test.com');
-        await userListPage.addUserbtn.click();
+        //Create employee for deletion
+        await employeeListPage.createemployeeBtn.click();
+        await employeeListPage.firstName.setValue(uniqueDeleteKey + 'FirstName');
+        await employeeListPage.lastName.setValue(uniqueDeleteKey + 'LastName');
+        await employeeListPage.startDate.setValue(startDate);
+        await employeeListPage.email.setValue(uniqueDeleteKey + '@test.com');
+        await employeeListPage.addemployeebtn.click();
 
         //Delete
-        await userListPage.findUser(uniqueDeleteKey);
-        await userListPage.userInList.click();
-        await userListPage.deleteUserBtn.click();
+        await employeeListPage.findemployee(uniqueDeleteKey);
+        await employeeListPage.employeeInList.click();
+        await employeeListPage.deleteemployeeBtn.click();
 
         //handle alert
-        await userListPage.acceptAlert();
+        await employeeListPage.acceptAlert();
         //validate
-        await browser.sleep(3000);//wait until user will be deleted
-        await userListPage.findUser(uniqueDeleteKey);
-        await expect(userListPage.userInList.isPresent()).toBeFalsy('User is still present in list after deletion');
+        await browser.sleep(3000);//wait until employee will be deleted
+        await employeeListPage.findemployee(uniqueDeleteKey);
+        await expect(employeeListPage.employeeInList.isPresent()).toBeFalsy('employee is still present in list after deletion');
 
         await loginPage.signInAsLuke();
-        await expect(userListPage.userInList.isPresent()).toBeFalsy('User is still present in list after deletion and relogin');
+        await expect(employeeListPage.employeeInList.isPresent()).toBeFalsy('employee is still present in list after deletion and relogin');
 
 
     });

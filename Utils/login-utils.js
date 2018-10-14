@@ -13,10 +13,10 @@ class LoginPage {
 
     }
 
-    signInAs(username, password) {
+    signInAs(userName, password) {
 
         return browser.driver.get(hostname)
-            .then(() => this.userName.setValue(username))
+            .then(() => this.userName.setValue(userName))
             .then(() => this.password.setValue(password))
             .then(() => this.loginButton.click())
 

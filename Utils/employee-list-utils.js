@@ -2,14 +2,14 @@
 const baseControl = require('../Utils/base-input-control.js');
 
 
-class UserListPage {
+class employeeListPage {
     constructor() {
-        this.createUserBtn = element(by.css('[ng-click="createEmployee()"]'));
-        this.editUserBtn = element(by.css('[ng-click="editEmployee()"]'));
-        this.deleteUserBtn = element(by.css('[ng-click="deleteEmployee()"]'));
+        this.createemployeeBtn = element(by.css('[ng-click="createEmployee()"]'));
+        this.editemployeeBtn = element(by.css('[ng-click="editEmployee()"]'));
+        this.deleteemployeeBtn = element(by.css('[ng-click="deleteEmployee()"]'));
         this.formFooter = element(by.css('[class="formFooter"]'));
-        this.addUserbtn = this.formFooter.element(by.css('[ng-show="isCreateForm"]'));
-        this.UpdateUserbtn = this.formFooter.element(by.css('[ng-hide="isCreateForm"]'));
+        this.addemployeebtn = this.formFooter.element(by.css('[ng-show="isCreateForm"]'));
+        this.Updateemployeebtn = this.formFooter.element(by.css('[ng-hide="isCreateForm"]'));
         this.firstName = new baseControl('[ng-model="selectedEmployee.firstName"]');
         this.lastName = new baseControl('[ng-model="selectedEmployee.lastName"]');
         this.startDate = new baseControl('[ng-model="selectedEmployee.startDate"]');
@@ -20,8 +20,8 @@ class UserListPage {
     };
 
 
-    findUser(name) {
-        return this.userInList = element(by.cssContainingText('[ng-repeat="employee in employees"]', name));
+    findemployee(name) {
+        return this.employeeInList = element(by.cssContainingText('[ng-repeat="employee in employees"]', name));
 
     };
 
@@ -37,4 +37,4 @@ class UserListPage {
 
 }
 
-module.exports = new UserListPage();
+module.exports = new employeeListPage();

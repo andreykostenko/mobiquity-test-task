@@ -1,6 +1,6 @@
 'use strict'
 const loginPage = require('../Utils/login-utils.js');
-const userListPage = require('../Utils/user-list-utils.js');
+const employeeListPage = require('../Utils/employee-list-utils.js');
 
 
 describe('Login/logout spec', () => {
@@ -11,18 +11,18 @@ describe('Login/logout spec', () => {
     });
 
 
-    it('User should be able to login and logout  ', async () => {
+    it('employee should be able to login and logout  ', async () => {
         await browser.driver.get(hostname);
-        await expect(userListPage.employeeList.isPresent()).toBeFalsy();
+        await expect(employeeListPage.employeeList.isPresent()).toBeFalsy();
         await loginPage.signInAsLuke();
-        await expect(userListPage.employeeList.isDisplayed()).toBeTruthy();
+        await expect(employeeListPage.employeeList.isDisplayed()).toBeTruthy();
         await loginPage.logoutButton.click();
-        await expect(userListPage.employeeList.isPresent()).toBeFalsy();
+        await expect(employeeListPage.employeeList.isPresent()).toBeFalsy();
 
     });
 
 
-    it('User shouldnt be able to login with invalid credentials', async () => {
+    it('employee shouldnt be able to login with invalid credentials', async () => {
         await expect(loginPage.loginErrorMessage.isDisplayed()).toBeFalsy();
         await browser.driver.get(hostname);
         await loginPage.signInAs('Dart', 'Vader');
@@ -30,10 +30,10 @@ describe('Login/logout spec', () => {
     });
 
 
-    it('After logging out no user data should be present on login page', async () => {
+    it('After logging out no employee data should be present on login page', async () => {
         await loginPage.signInAsLuke();
         await loginPage.logoutButton.click();
-        await expect(loginPage.userName.getValue()).toBe('','Username shoudnt be present on login page after logging out');
+        await expect(loginPage.userName.getValue()).toBe('','employeename shoudnt be present on login page after logging out');
         await expect(loginPage.password.getValue()).toBe('','Password shoudnt be present on login page after logging out');
 
 
