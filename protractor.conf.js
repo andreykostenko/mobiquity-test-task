@@ -3,18 +3,16 @@
     g.moment = require('moment');
 
 
-    exports.config = {
 
+    exports.config = {
         onPrepare: function () {
             var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
             jasmine.getEnv().addReporter(
                 new Jasmine2HtmlReporter({
-                    savePath: 'Report'
+                    savePath: 'report'
                 })
             );
         },
-
-
         // The address of a running selenium server.
         //seleniumAddress: 'http://localhost:4444/wd/hub', Since directConnect is set to true, we don't use it
         capabilities: {
@@ -31,6 +29,7 @@
 
     };
     g.hostname = 'http://cafetownsend-angular-rails.herokuapp.com/login';
+    g.defaultWait = (10000);
 
 
 })(global);

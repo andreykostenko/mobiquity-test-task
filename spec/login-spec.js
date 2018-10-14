@@ -1,6 +1,6 @@
 'use strict'
-const loginPage = require('../Utils/login-utils.js');
-const employeeListPage = require('../Utils/employee-list-utils.js');
+const loginPage = require('../page-objects/login-page.js');
+const employeeListPage = require('../page-objects/employee-list-page.js');
 
 
 describe('Login/logout spec', () => {
