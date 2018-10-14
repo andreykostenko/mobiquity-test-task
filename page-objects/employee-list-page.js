@@ -4,9 +4,9 @@ const baseControl = require('../controls/base-input-control.js');
 
 class employeeListPage {
     constructor() {
-        this.createemployeeBtn = element(by.css('[ng-click="createEmployee()"]'));
-        this.editemployeeBtn = element(by.css('[ng-click="editEmployee()"]'));
-        this.deleteemployeeBtn = element(by.css('[ng-click="deleteEmployee()"]'));
+        this.createEmployeeBtn = element(by.css('[ng-click="createEmployee()"]'));
+        this.editEmployeeButton = element(by.css('[ng-click="editEmployee()"]'));
+        this.deleteEmployeeBtn = element(by.css('[ng-click="deleteEmployee()"]'));
         this.formFooter = element(by.css('[class="formFooter"]'));
         this.addEmployeeBtn = this.formFooter.element(by.css('[ng-show="isCreateForm"]'));
         this.updatEemployeeBtn = this.formFooter.element(by.css('[ng-hide="isCreateForm"]'));

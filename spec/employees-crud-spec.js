@@ -18,7 +18,6 @@ describe('Employees CRUD spec', () => {
     const startDateUpdated = moment(startDate).add(1, 'days').format('YYYY-MM-DD');
     const uniqueCreateKey = uniqueMask + 'C';
     const uniqueEditKey = uniqueMask + 'U`';
-    const uniqueDeleteKey = uniqueMask + 'D`';
     const validateEmployeeData = async (createKey, startDate) => {
         await expect(employeeListPage.firstName.getValue()).toEqual(createKey + 'FirstName');
         await expect(employeeListPage.lastName.getValue()).toEqual(createKey + 'LastName');
@@ -26,18 +25,21 @@ describe('Employees CRUD spec', () => {
         await expect(employeeListPage.startDate.getValue()).toEqual(startDate);
 
     };
+    const findEmployeeAndClick = async (employeeName) => {
+        await employeeListPage.findEmployee(employeeName);
+        await employeeListPage.employeeInList.click();
+    };
 
     it('Create new employee  ', async () => {
-        await employeeListPage.createemployeeBtn.click();
+        await employeeListPage.createEmployeeBtn.click();
         await employeeListPage.firstName.setValue(uniqueCreateKey + 'FirstName');
         await employeeListPage.lastName.setValue(uniqueCreateKey + 'LastName');
         await employeeListPage.startDate.setValue(startDate);
         await employeeListPage.email.setValue(uniqueCreateKey + '@test.com');
         await employeeListPage.addEmployeeBtn.click();
 
-        await employeeListPage.findEmployee(uniqueCreateKey);
-        await employeeListPage.employeeInList.click();
-        await employeeListPage.editemployeeBtn.click();
+        await findEmployeeAndClick(uniqueCreateKey);
+        await employeeListPage.editEmployeeButton.click();
         await validateEmployeeData(uniqueCreateKey, startDate);
     });
 
@@ -57,13 +59,11 @@ describe('Employees CRUD spec', () => {
         await browser.actions().doubleClick(employeeListPage.employeeInList).perform();
         await validateEmployeeData(uniqueEditKey, startDateUpdated);
 
-
     });
 
     it('Delete employee ', async () => {
-        await employeeListPage.findEmployee(uniqueEditKey);
-        await employeeListPage.employeeInList.click();
-        await employeeListPage.deleteemployeeBtn.click();
+        await findEmployeeAndClick(uniqueCreateKey);
+        await employeeListPage.deleteEmployeeBtn.click();
         await alertHelper.acceptAlert();
         await employeeListPage.findEmployee(uniqueEditKey);
         await expect(employeeListPage.employeeInList.isPresent()).toBeFalsy('employee is still present in list after deletion');
